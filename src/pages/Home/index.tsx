@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feather, Icon } from '@expo/vector-icons';
+import { Feather as Icon } from '@expo/vector-icons';
 import { View, ImageBackground, Text, Image, StyleSheet } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
