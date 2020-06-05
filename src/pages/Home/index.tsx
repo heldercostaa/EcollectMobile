@@ -1,6 +1,6 @@
 import React from 'react';
 import { Feather as Icon } from '@expo/vector-icons';
-import { View, ImageBackground, Text, Image, StyleSheet } from 'react-native';
+import { View, ImageBackground, Text, Image, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
@@ -12,32 +12,49 @@ const Home: React.FC = () => {
   }
 
   return (
-    <ImageBackground 
-      source={require('../../assets/home-background.png')} 
-      style={styles.container}
-      imageStyle={{ width: 274, height: 368 }}
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined }>
+      <ImageBackground 
+        source={require('../../assets/home-background.png')} 
+        style={styles.container}
+        imageStyle={{ width: 274, height: 368 }}
 
-    >
-      <View style={styles.main}>
-        <Image source={require('../../assets/logo.png')} />
-        <Text style={styles.title}>Your marketplace for waste collection.</Text>
-        <Text style={styles.description}>Our goal is to help people find collect points in an efficient way.</Text>
-      </View>
-
-      <View style={styles.footer}>
-        <RectButton style={styles.button} onPress={handleNavigateToPoints}>
-          <View style={styles.buttonIcon}>
-            <Text>
-              <Icon name="arrow-right" color="#fff" size={24} />
-            </Text>
+      >
+        <View style={styles.main}>
+          <Image source={require('../../assets/logo.png')} />
+          
+          <View>
+            <Text style={styles.title}>Your marketplace for waste collection.</Text>
+            <Text style={styles.description}>Our goal is to help people find collect points in an efficient way.</Text>
           </View>
-          <Text style={styles.buttonText}>
-            Show me!
-          </Text>
-        </RectButton>
-      </View>
+        </View>
 
-    </ImageBackground>
+        <View style={styles.footer}>
+
+          <TextInput 
+            style={styles.input}
+            placeholder="Choose a state"
+          />
+
+
+          <TextInput 
+            style={styles.input}
+            placeholder="Choose a city"
+          />
+
+          <RectButton style={styles.button} onPress={handleNavigateToPoints}>
+            <View style={styles.buttonIcon}>
+              <Text>
+                <Icon name="arrow-right" color="#fff" size={24} />
+              </Text>
+            </View>
+            <Text style={styles.buttonText}>
+              Show me!
+            </Text>
+          </RectButton>
+        </View>
+
+      </ImageBackground>
+    </KeyboardAvoidingView>
   );
 };
 
