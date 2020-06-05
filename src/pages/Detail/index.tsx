@@ -45,13 +45,13 @@ const Detail: React.FC = () => {
 
   function handleComposeMail() {
     MailComposer.composeAsync({
-      subject: 'Interest to use your Collection Point',
+      subject: 'Interest in using your Collection Point',
       recipients: [data.point.email]
     });
   }
 
   function handleWhatsapp() {
-    
+    Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}&text=I am interested in using your collection point...`);
   }
 
   if (!data.point) {
